@@ -21,17 +21,20 @@ function Dashboard() {
     };
 
     return (
-        <div>
-            <h1>Dashboard</h1>
-            <ul>
+        <div className="bg-blue-200 p-4">
+            <h1 className="text-3xl font-semibold mb-4">Users</h1>
+            <div className="grid grid-cols-3 gap-4">
                 {users.map(user => (
-                    <li key={user.id}>
-                        {user.firstName} {user.lastName}
-                    </li>
+                    <div key={user.id} className="bg-gray-200 p-4 rounded-lg">
+                        <img src={user.image} alt={`${user.firstName} ${user.lastName}`} className="w-20 h-auto rounded-lg mb-2" />
+                        <p className="text-lg font-semibold">{user.firstName} {user.lastName}</p>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }
 
 export default Dashboard;
+
+
