@@ -3,17 +3,18 @@ import { useParams, useNavigate } from "react-router-dom";
 import { User } from "../Components/Interfaces/User";
 
 type EditUserProps = {
-    users: User[];
-    setUsers: (users: User[]) => void;
-    handleDelete: () => void;
+    users: User[];// Array of users
+    setUsers: (users: User[]) => void;// Function to update users
+    handleDelete: () => void;// Function to handle user deletion
 };
 
 export default function EditUser({ users, setUsers, handleDelete }: EditUserProps) {
     const navigate = useNavigate();
-    const { userId } = useParams<{ userId: string }>();
-    const [user, setUser] = useState<User | null>(null);
-    const [formValues, setFormValues] = useState<User | null>(null);
+    const { userId } = useParams<{ userId: string }>();// Extract userId from URL params
+    const [user, setUser] = useState<User | null>(null);// State to store user data
+    const [formValues, setFormValues] = useState<User | null>(null);// State to store form values
 
+    // Fetch user data from API based on userId
     useEffect(() => {
         const fetchUser = async () => {
             try {
@@ -27,11 +28,13 @@ export default function EditUser({ users, setUsers, handleDelete }: EditUserProp
 
         if (userId) fetchUser();
     }, [userId]);
-
+    
+    // Set form values when user data changes
     useEffect(() => {
         setFormValues(user);
     }, [user]);
 
+    // Handle input change in the form
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setFormValues((prevValues) => ({
@@ -40,6 +43,7 @@ export default function EditUser({ users, setUsers, handleDelete }: EditUserProp
         }));
     };
 
+    // Handle form submission
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         if (!formValues || !userId) return;
@@ -47,6 +51,7 @@ export default function EditUser({ users, setUsers, handleDelete }: EditUserProp
         const userIdNumber = parseInt(userId, 10);
         if (isNaN(userIdNumber)) return;
 
+        // Update user data via API
         fetch(`https://dummyjson.com/users/${userId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
@@ -59,6 +64,7 @@ export default function EditUser({ users, setUsers, handleDelete }: EditUserProp
         });
     };
 
+    // Handle click on delete button
     const handleDeleteClick = () => {
         handleDelete();
         navigate('/');

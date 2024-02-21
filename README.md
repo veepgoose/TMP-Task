@@ -1,37 +1,36 @@
-# The Marketing Pod Dev - Technical Task
+## Contact-A-Cat Business Directory
 
-Thanks for applying for a developer role at The Marketing Pod. The purpose of this test is just to check how you would implement the following in a React application. You are free to spend as much time as you would need but we advise the task should take more that 4 - 6 hours at most. This isn't a test of your UI / UX skills, so dont worry we are not expecting a highly polished UI, just something functional.
+Thank you for considering my application for the developer role at The Marketing Pod. Below, I'll outline my process, approach, and implementation of the technical task.
 
-Once you have completed the task please add to Git and share the repo with us.
+### Process
 
-## Brief
+1. **Initial Research**: Upon receiving the task brief, I started by familiarising myself with Vite, TypeScript, and Tailwind CSS. I reviewed Vite's documentation, refreshed my knowledge of TypeScript through online courses, and explored Tailwind CSS documentation to understand its utility classes.
 
-The task is to create a simple dashboard application which will display a list of users. You should be able to click on a user and it will open up a modal with the option to edit or delete the user. Clicking `edit` will take you to a new page with the information on the user displayed in a form. There should be the option to also delete the user here.
+2. **Data Exploration**: I began by fetching data from the provided API endpoint to understand its structure and content. This helped me conceptualise the application's layout and functionality.
 
-### Additional information
+3. **Ideation**: Based on the data and requirements, I conceptualised a Business Directory for Cats named "Contact-A-Cat." I envisioned a simple dashboard displaying cat profiles, a modal for editing or deleting cats, and an edit user page resembling a contact card.
 
-- Please use this to simulate the API - [https://dummyjson.com/docs/] - specifically the `user` endpoint.
-- You are free to use which ever router you want, please make sure you have a `dashboard` page which has all the users listed and a `user` page which is used to get the data about that user.
-- The site should be responsive and look good on all devices, however it just needs to be basic responsive and not break on smaller screens
-- Please use Tailwind for styling - [https://tailwindcss.com/docs/installation] - this is already installed for you
+### Approach
 
-### Scripts
+1. **Dashboard**: I opted for a clean and simple layout, displaying cat profiles with their images, first names, and last names. This minimalist approach aimed for a user-friendly interface.
 
-- `npm run dev` start Vite
-- `npm run build` builds project
+2. **Modal**: The modal presented two primary options: editing cat details and deleting the cat. I kept the modal's design straightforward to maintain focus on functionality.
 
-### Bonus points
+3. **Edit User Page**: For the edit user page, I designed a form resembling a contact card, providing fields for first name, last name, email, phone, and address. This layout aimed for clarity and ease of use.
 
-Bonus points are available for the following:
+### Implementation
 
-- A sidebar menu which opens and closes
-- Adding the ability to save the user, there is information on how to replicate this here - [https://dummyjson.com/docs/users#update]
-- Creating a nice, clean UI that works well accross all devices
-- Any other nice touches to the UI that you feel enhance it
-- Dark mode!
+- **API Integration**: I utilised the provided API endpoint to fetch user data and simulate CRUD operations.
+- **Routing**: I leveraged React Router for page navigation, creating routes for the dashboard and edit user page.
+- **Styling**: Tailwind CSS facilitated rapid styling with its utility classes. I opted for a colorful palette, rounded profile images, and a clean UI design.
+- **Functionality**: I implemented functionalities such as editing user details, deleting users, and basic pagination for enhanced user experience.
 
-Remember this test is just about how you would approach the above work. If you are unable to complete the test in the time that is ok, please be prepared to discuss your solution and the challenges you may have faced whilst completing it.
+### Additional Functionalities
 
-If you have any questions please feel free to reach out to us.
+- **Pagination**: Implemented basic pagination to enhance the dashboard's usability and improve load times.
+- **Sorting**: Added sorting options by first and last names to facilitate easier navigation through the user list.
 
-_Good luck_
+### Conclusion
+
+In conclusion, this project provided an opportunity to with a new framework - Vite, further my TypeScript learning, and Tailwind CSS while showcasing my ability to design and develop a functional web application. I enjoyed the challenge and look forward to discussing my solution and any potential improvements further.
+
