@@ -1,25 +1,69 @@
-import React from 'react';
+import { useState } from 'react';
 
 type ModalProps = {
     show: boolean;
     onClose: () => void;
-    onEdit: () => void;
-    onDelete: () => void;
+    handleEdit: () => void;
+    handleDelete: () => void;
 };
 
-const Modal: React.FC<ModalProps> = ({ show, onClose, onEdit, onDelete }) => {
+export default function Modal({
+    show,
+    onClose,
+    handleEdit,
+    handleDelete,
+}: ModalProps) {
+    const [isEditHovered, setIsEditHovered] = useState(false);
+    const [isDeleteHovered, setIsDeleteHovered] = useState(false);
+
     if (!show) return null;
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white p-4 rounded-lg">
-                <h2 className="text-lg font-semibold mb-4">User Options</h2>
-                <button className="mr-4" onClick={onEdit}>Edit User</button>
-                <button onClick={onDelete}>Delete User</button>
-                <button className="absolute top-0 right-0 p-2" onClick={onClose}>X</button>
+        <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70"
+            onClick={onClose}
+        >
+            <div
+                className="relative bg-white p-8 rounded-lg shadow-lg w-64 h-50" 
+                onClick={(e: React.MouseEvent<HTMLDivElement>) =>
+                    e.stopPropagation()
+                }
+                onMouseEnter={() => setIsEditHovered(true)}
+                onMouseLeave={() => setIsDeleteHovered(false)}
+            >
+                <h2 className="text-2xl font-bold mb-4">View User</h2>
+                <button
+                    className={`w-full py-2 mb-2 rounded ${
+                        isEditHovered
+                            ? 'bg-gray-500 text-white'
+                            : 'bg-gray-400  hover:bg-gray-300'
+                    }`}
+                    onClick={handleEdit}
+                    onMouseEnter={() => setIsEditHovered(true)}
+                    onMouseLeave={() => setIsEditHovered(false)}
+                >
+                    Edit
+                </button>
+                <button
+                    className={`w-full py-2 rounded ${
+                        isDeleteHovered
+                            ? 'bg-red-600 text-white'
+                            : 'bg-red-300 text-red-800 hover:bg-red-800'
+                    }`}
+                    onClick={handleDelete}
+                    onMouseEnter={() => setIsDeleteHovered(true)}
+                    onMouseLeave={() => setIsDeleteHovered(false)}
+                >
+                    Delete 
+                </button>
             </div>
         </div>
     );
-};
+}
 
-export default Modal;
+
+
+
+
+
+
